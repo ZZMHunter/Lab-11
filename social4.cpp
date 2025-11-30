@@ -140,7 +140,7 @@ class Network{
             if(userNum == -1){
                 return false;
             }
-            for(int i = 0; i < numPosts; i++){
+            for(int i = numPosts - 1; i >= 0; i--){
                 for(int j = 0; j < numUsers; j++){
                     if(following[userNum][j] == true && profiles[j].getUsername() == posts[i].username){
                         cout << profiles[j].getFullName() << ": " << posts[i].message << endl;
