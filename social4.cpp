@@ -141,17 +141,19 @@ class Network{
         }
 };
 
-int main(){
+int main() {
     Network nw;
+    // add three users
     nw.addUser("mario", "Mario");
     nw.addUser("luigi", "Luigi");
     nw.addUser("yoshi", "Yoshi");
-
-    nw.follow("mario","luigi");
+    
+    nw.follow("mario", "luigi");
     nw.follow("luigi", "mario");
     nw.follow("luigi", "yoshi");
     nw.follow("yoshi", "mario");
 
+    // write some posts
     nw.writePost("mario", "It's a-me, Mario!");
     nw.writePost("luigi", "Hey hey!");
     nw.writePost("mario", "Hi Luigi!");
