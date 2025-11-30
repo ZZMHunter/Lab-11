@@ -12,6 +12,7 @@
 #include <string>
 
 using namespace std;
+//struct Post
 struct Post{
     string username;
     string message;
@@ -122,30 +123,38 @@ class Network{
         }
         //D
         bool writePost(string usrn, string msg){
+            //has too be less than 100 posts
             if(numPosts>=100){
                 return false;
             }
+            //create new Post
             struct Post newPost = {usrn, msg};
+            //add Post to posts[] array
             posts[numPosts] =  newPost;
             numPosts++;
             return true;
         }
         bool printTimeline(string usrn){
             int userNum = -1;
+            //find ID of user
             for(int i = 0; i < numUsers; i++){
                 if (profiles[i].getUsername() == usrn){
                     userNum = i;
                 }
             }
+            //user has to exist, otherwise return false
             if(userNum == -1){
                 return false;
             }
+            //reverse chronological
             for(int i = numPosts - 1; i >= 0; i--){
                 for(int j = 0; j < numUsers; j++){
+                    //for other users following the inputted user
                     if(following[userNum][j] == true && profiles[j].getUsername() == posts[i].username){
                         cout << profiles[j].getFullName() << ": " << posts[i].message << endl;
                     }
                 }
+                //posts from the user
                 if(profiles[userNum].getUsername() == posts[i].username){
                     cout << profiles[userNum].getFullName() << ": " << posts[i].message << endl;
                 }
