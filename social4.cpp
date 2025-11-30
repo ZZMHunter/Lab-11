@@ -82,34 +82,30 @@ class Network{
         }
         //C
         bool follow(string usrn1, string usrn2){
-            int follower = -1;
-            int followed = -1;
-            for(int i = 0; i < numUsers; i++){
-                if(usrn1 == profiles[i].getUsername()){
-                    follower = i;
-                }
-                if(usrn2 == profiles[i].getUsername()){
-                    followed = i;
-                }
-            }
-            if(follower != -1 || followed != -1){
+            int follower = findID(usrn1);
+            int followed = findID(usrn2);
+
+            if (follower == -1 || followed == -1) {
                 return false;
             }
+
             following[follower][followed] = true;
             return true;
         }
-        void printDot(){
-            for(int i = 0; i < numUsers; i++){
-                cout << "\"@" << profiles[i].getUsername() << "\"" << endl;
+        void printDot() {
+            cout << "digraph {" << endl;
+            for (int i = 0; i < numUsers; i++) {
+                cout << "    \"@" << profiles[i].getUsername() << "\"" << endl;
             }
-            for(int i = 0; i < numUsers; i++){
-                for(int j = 0; j < numUsers; j++){
-                    if (following[i][j] == true){
-                        cout << "\"@" << profiles[i].getUsername() << "\"" <<
-                                 "-> \"@" << profiles[j].getUsername() <<"\"" << endl;
+            for (int i = 0; i < numUsers; i++) {
+                for (int j = 0; j < numUsers; j++) {
+                    if (following[i][j]) {
+                        cout << "    \"@" << profiles[i].getUsername()
+                            << "\" -> \"@" << profiles[j].getUsername() << "\"" << endl;
                     }
                 }
             }
+            cout << "}" << endl;
         }
         //D
         bool writePost(string usrn, string msg){
