@@ -67,8 +67,16 @@ class Network{
             }
         }
         bool addUser(string usrn, string dspn){
-            if (numUsers >= MAX_USERS){
+            if (numUsers >= MAX_USERS) {
                 return false;
+            }
+            if (usrn == "") {
+                return false;
+            }
+            for (int i = 0; i < numUsers; i++) {
+                if (profiles[i].getUsername() == usrn) {
+                    return false;
+                }
             }
             profiles[numUsers] = Profile(usrn, dspn);
             numUsers++;
