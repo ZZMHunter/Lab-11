@@ -60,8 +60,12 @@ class Network{
             numUsers = 0;
         }
         bool addUser(string usrn, string dspn){
+            if (numUsers >= MAX_USERS){
+                return false;
+            }
             profiles[numUsers] = Profile(usrn, dspn);
             numUsers++;
+            return true;
         }
 };
 

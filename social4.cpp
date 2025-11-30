@@ -73,8 +73,12 @@ class Network{
             }
         }
         bool addUser(string usrn, string dspn){
+            if (numUsers >= MAX_USERS){
+                return false;
+            }
             profiles[numUsers] = Profile(usrn, dspn);
             numUsers++;
+            return true;
         }
         //C
         bool follow(string usrn1, string usrn2){
