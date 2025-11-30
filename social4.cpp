@@ -36,7 +36,7 @@ class Profile{
         }
         string getFullName(){
             string result = displayName;
-            result += " (@)";
+            result += " (@";
             result += username;
             result += ")";
             return result;
