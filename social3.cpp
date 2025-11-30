@@ -14,6 +14,7 @@
 #include <string>
 
 using namespace std;
+//A
 class Profile{
     private:
         string username;
@@ -41,7 +42,7 @@ class Profile{
             displayName = dspn;
         }
 };
-
+//B
 class Network{
     private:
         static const int MAX_USERS = 20;
@@ -73,6 +74,7 @@ class Network{
             numUsers++;
             return true;
         }
+        //C
         bool follow(string usrn1, string usrn2){
             int follower = -1;
             int followed = -1;

@@ -14,6 +14,7 @@
 #include <string>
 
 using namespace std;
+//A
 class Profile{
     private:
         string username;
@@ -41,7 +42,7 @@ class Profile{
             displayName = dspn;
         }
 };
-
+//B
 class Network{
     private:
         static const int MAX_USERS = 20;
