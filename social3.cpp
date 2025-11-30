@@ -13,12 +13,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 class Profile{
     private:
-        std::string username;
-        std::string displayName;
+        string username;
+        string displayName;
     public:
-        Profile(std::string usrn, std::string dspn){
+        Profile(string usrn, string dspn){
             username = usrn;
             displayName = dspn;
         }
@@ -26,17 +27,17 @@ class Profile{
             username = "";
             displayName = "";
         }
-        std::string getUsername(){
+        string getUsername(){
             return username;
         }
-        std::string getFullName(){
-            std::string result = displayName;
+        string getFullName(){
+            string result = displayName;
             result += " (@)";
             result += username;
             result += ")";
             return result;
         }
-        void setDisplayName(std::string dspn){
+        void setDisplayName(string dspn){
             displayName = dspn;
         }
 };
@@ -47,7 +48,7 @@ class Network{
         int numUsers;
         bool following[MAX_USERS][MAX_USERS];
         Profile profiles[MAX_USERS];
-        int findID(std::string usrn){
+        int findID(string usrn){
             for(int i = 0; i < MAX_USERS; i++){
                 if (profiles[i].getUsername()==usrn){
                     return i;
@@ -64,11 +65,11 @@ class Network{
                 }
             }
         }
-        bool addUser(std::string usrn, std::string dspn){
+        bool addUser(string usrn, string dspn){
             profiles[numUsers] = Profile(usrn, dspn);
             numUsers++;
         }
-        bool follow(std::string usrn1, std::string usrn2){
+        bool follow(string usrn1, string usrn2){
             int follower = -1;
             int followed = -1;
             for(int i = 0; i < numUsers; i++){
@@ -87,13 +88,13 @@ class Network{
         }
         void printDot(){
             for(int i = 0; i < numUsers; i++){
-                std::cout << "\"@" << profiles[i].getUsername() << "\"" << std::endl;
+                cout << "\"@" << profiles[i].getUsername() << "\"" << endl;
             }
             for(int i = 0; i < numUsers; i++){
                 for(int j = 0; j < numUsers; j++){
                     if (following[i][j] == true){
-                        std::cout << "\"@" << profiles[i].getUsername() << "\"" <<
-                                 "-> \"@" << profiles[j].getUsername() <<"\"" << std::endl;
+                        cout << "\"@" << profiles[i].getUsername() << "\"" <<
+                                 "-> \"@" << profiles[j].getUsername() <<"\"" << endl;
                     }
                 }
             }
@@ -116,8 +117,8 @@ int main(){
     nw.addUser("wario", "Wario");
 
     for(int i = 2; i < 6; i++){
-        std::string usrn = "mario" + std::to_string(i);
-        std::string dspn = "Mario" + std::to_string(i);
+        string usrn = "mario" + to_string(i);
+        string dspn = "Mario" + to_string(i);
         nw.addUser(usrn, dspn);
         nw.follow(usrn, "mario");
     }

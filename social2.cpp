@@ -13,12 +13,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 class Profile{
     private:
-        std::string username;
-        std::string displayName;
+        string username;
+        string displayName;
     public:
-        Profile(std::string usrn, std::string dspn){
+        Profile(string usrn, string dspn){
             username = usrn;
             displayName = dspn;
         }
@@ -26,17 +27,17 @@ class Profile{
             username = "";
             displayName = "";
         }
-        std::string getUsername(){
+        string getUsername(){
             return username;
         }
-        std::string getFullName(){
-            std::string result = displayName;
+        string getFullName(){
+            string result = displayName;
             result += " (@)";
             result += username;
             result += ")";
             return result;
         }
-        void setDisplayName(std::string dspn){
+        void setDisplayName(string dspn){
             displayName = dspn;
         }
 };
@@ -46,7 +47,7 @@ class Network{
         static const int MAX_USERS = 20;
         int numUsers;
         Profile profiles[MAX_USERS];
-        int findID(std::string usrn){
+        int findID(string usrn){
             for(int i = 0; i < MAX_USERS; i++){
                 if (profiles[i].getUsername()==usrn){
                     return i;
@@ -58,7 +59,7 @@ class Network{
         Network(){
             numUsers = 0;
         }
-        bool addUser(std::string usrn, std::string dspn){
+        bool addUser(string usrn, string dspn){
             profiles[numUsers] = Profile(usrn, dspn);
             numUsers++;
         }
@@ -66,15 +67,15 @@ class Network{
 
 int main(){
     Network nw;
-    std::cout << nw.addUser("mario", "Mario") << std::endl;
-    std::cout << nw.addUser("luigi", "Luigi") << std::endl;
+    cout << nw.addUser("mario", "Mario") << endl;
+    cout << nw.addUser("luigi", "Luigi") << endl;
 
-    std::cout << nw.addUser("mario", "Mario2") << std::endl;
-    std::cout << nw.addUser("mario 2", "Mario2") << std::endl;
-    std::cout << nw.addUser("mario-2", "Mario2") << std::endl;
+    cout << nw.addUser("mario", "Mario2") << endl;
+    cout << nw.addUser("mario 2", "Mario2") << endl;
+    cout << nw.addUser("mario-2", "Mario2") << endl;
 
     for(int i = 2; i < 20; i ++){
-        std::cout << nw.addUser("mario"+std::to_string(i), "Mario"+std::to_string(i)) << std::endl;
+        cout << nw.addUser("mario"+to_string(i), "Mario"+to_string(i)) << endl;
     }
-    std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;
+    cout << nw.addUser("yoshi", "Yoshi") << endl;
 }

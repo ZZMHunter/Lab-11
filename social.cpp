@@ -14,12 +14,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 class Profile{
     private:
-        std::string username;
-        std::string displayName;
+        string username;
+        string displayName;
     public:
-        Profile(std::string usrn, std::string dspn){
+        Profile(string usrn, string dspn){
             username = usrn;
             displayName = dspn;
         }
@@ -27,29 +28,31 @@ class Profile{
             username = "";
             displayName = "";
         }
-        std::string getUsername(){
+        string getUsername(){
             return username;
         }
-        std::string getFullName(){
-            std::string result = displayName;
+        string getFullName(){
+            string result = displayName;
             result += " (@)";
             result += username;
             result += ")";
             return result;
         }
-        void setDisplayName(std::string dspn){
+        void setDisplayName(string dspn){
             displayName = dspn;
         }
 };
 
 int main() {
     Profile p1("marco","Marco");
-    std::cout << p1.getUsername() << std::endl;
-    std::cout << p1.getFullName() << std::endl;
+    cout << p1.getUsername() << endl;
+    cout << p1.getFullName() << endl;
+
     p1.setDisplayName("Marco Rossi");
-    std::cout << p1.getUsername() << std::endl;
-    std::cout << p1.getFullName() << std::endl;
+    cout << p1.getUsername() << endl;
+    cout << p1.getFullName() << endl;
+
     Profile p2("tarma1", "Tarma Roving");
-    std::cout << p2.getUsername() << std::endl;
-    std::cout << p2.getFullName() << std::endl;
+    cout << p2.getUsername() << endl;
+    cout << p2.getFullName() << endl;
 }
