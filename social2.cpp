@@ -67,6 +67,11 @@ class Network{
             if (usrn == "") {
                 return false;
             }
+            for (char c : usrn) {
+                if (!isalnum(c)) {
+                    return false;
+                }
+            }
             for (int i = 0; i < numUsers; i++) {
                 if (profiles[i].getUsername() == usrn) {
                     return false;
